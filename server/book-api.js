@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const port = 3000;
 
 let books = [
   {
@@ -47,11 +46,11 @@ app.post("/book", (req, res) => {
   res.send("Book is added to the database");
 });
 
-app.get("/book", (req, res) => {
+const simpleGet = app.get("/book", (req, res) => {
   res.json(books);
 });
 
-app.get("/book/:isbn", (req, res) => {
+const isbnGet = app.get("/book/:isbn", (req, res) => {
   // reading isbn from the URL
   const isbn = req.params.isbn;
 
@@ -102,6 +101,4 @@ app.post("/book/:isbn", (req, res) => {
   res.send("Book is edited");
 });
 
-app.listen(port, () =>
-  console.log(`Hello world app listening on port ${port}!`)
-);
+module.exports = app;
