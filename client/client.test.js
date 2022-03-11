@@ -1,4 +1,3 @@
-const { listen } = require("../server/book-api");
 const { deleteBook } = require("./book-list");
 test("dummy test", () => {
   let a = 1;
@@ -12,5 +11,5 @@ test("deleteBook test", async () => {
 
   await deleteBook(isbn);
 
-  expect(isbn).beNAN();
+  expect(isbn).not.toHaveReturned();
 });
