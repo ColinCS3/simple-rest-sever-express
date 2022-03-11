@@ -46,11 +46,11 @@ app.post("/book", (req, res) => {
   res.send("Book is added to the database");
 });
 
-const simpleGet = app.get("/book", (req, res) => {
+app.get("/book", (req, res) => {
   res.json(books);
 });
 
-const isbnGet = app.get("/book/:isbn", (req, res) => {
+app.get("/book/:isbn", (req, res) => {
   // reading isbn from the URL
   const isbn = req.params.isbn;
 
