@@ -1,4 +1,5 @@
-const { deleteBook, loadBoooks } = require("./book-list");
+const { listen } = require("../server/book-api");
+const { deleteBook } = require("./book-list");
 test("dummy test", () => {
   let a = 1;
   let b = 2;
@@ -6,12 +7,10 @@ test("dummy test", () => {
 });
 
 //mock onClick, then check for book with same isbn
-test("deleteBook test", () => {
+test("deleteBook test", async () => {
   const isbn = 1234;
 
-  const response = await request(deleteBook(isbn)).delete(
-    "http://localhost:3000/book/${isbn}"
-  );
+  await deleteBook(isbn);
 
-  expect(response.statusCode).toBe(200);
+  expect(isbn).beNAN();
 });
